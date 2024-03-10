@@ -1,4 +1,4 @@
-namespace OpenApiModelDocs;
+namespace OpenApiModelDocs.Models;
 
 /// <summary>
 /// Daily weather forecast.

@@ -1,4 +1,5 @@
 using System.Reflection;
+using OpenApiModelDocs.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,8 +11,12 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options =>
 {
-    var xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
-    options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
+    Assembly[] assemblies = [Assembly.GetExecutingAssembly(), typeof(WeatherForecast).Assembly];
+    foreach (var assembly in assemblies)
+    {
+        var xmlFilename = $"{assembly.GetName().Name}.xml";
+        options.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
+    }
 });
 
 var app = builder.Build();
