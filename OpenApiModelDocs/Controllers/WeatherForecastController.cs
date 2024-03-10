@@ -2,6 +2,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace OpenApiModelDocs.Controllers;
 
+/// <summary>
+/// Implements weather forecast related endpoints.
+/// </summary>
 [ApiController]
 [Route("[controller]")]
 public class WeatherForecastController : ControllerBase
@@ -31,6 +34,10 @@ public class WeatherForecastController : ControllerBase
         _logger = logger;
     }
 
+    /// <summary>
+    /// Gets weather forecast for the next five days.
+    /// </summary>
+    /// <returns>A sequence of daily weather forecasts.</returns>
     [HttpGet(Name = "GetWeatherForecast")]
     public IEnumerable<WeatherForecast> Get()
     {
